@@ -1,11 +1,6 @@
 # DAGANET MACHINE - Python Dependencies
-# Note: Most core tools (nmap, wifite, bettercap) are system packages in Kali Linux.
-# They should be installed via apt.
-# Below are python libraries used by the script or potential sub-tools.
+# No external pip packages are strictly required for the core script.
+# All network tools (Nmap, Wifite, etc.) should be installed via APT.
+#
+# sudo apt install nmap wifite aircrack-ng kismet safe-rm bettercap
 
-# Core
-argparse
-# (subprocess, sys, os are built-ins)
-
-# OSINT (Optional, if running via python module instead of CLI)
-# sherlock-project
