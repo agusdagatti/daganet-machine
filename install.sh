@@ -32,6 +32,10 @@ else
         cd /opt/setoolkit
         # Fix: pycrypto is dead and breaks on Python 3.11+. Replace with pycryptodome.
         sed -i 's/pycrypto/pycryptodome/' requirements.txt
+        # Fix: Prevent pip from trying to downgrade system packages (causes errors)
+        sed -i '/pyopenssl/Id' requirements.txt
+        sed -i '/cryptography/Id' requirements.txt
+        
         pip3 install -r requirements.txt --break-system-packages
         python3 setup.py install
         echo "[*] SET installed to /opt/setoolkit"
