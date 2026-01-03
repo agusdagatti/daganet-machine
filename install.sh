@@ -30,7 +30,9 @@ else
     if [ ! -d "/opt/setoolkit" ]; then
         git clone https://github.com/trustedsec/social-engineer-toolkit/ /opt/setoolkit
         cd /opt/setoolkit
-        pip3 install -r requirements.txt
+        # Fix: pycrypto is dead and breaks on Python 3.11+. Replace with pycryptodome.
+        sed -i 's/pycrypto/pycryptodome/' requirements.txt
+        pip3 install -r requirements.txt --break-system-packages
         python3 setup.py install
         echo "[*] SET installed to /opt/setoolkit"
     else
